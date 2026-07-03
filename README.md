@@ -4,7 +4,6 @@
 
 🚀 **Mais de 10 anos de experiência em Qualidade de Software**
 
-📍 **Osasco - SP, Brasil**
 
 ---
 
