@@ -98,9 +98,9 @@ qa-playwright-ci
 
 ## 📫 Contato
 
-💼 **LinkedIn:** (adicione seu link)
+💼 **LinkedIn:** (https://www.linkedin.com/in/brunakcarvalho/)
 
-📧 **E-mail:** (adicione seu e-mail)
+
 
 🐙 **GitHub:** https://github.com/brunakaren10
 
