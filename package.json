@@ -1,11 +1,24 @@
 {
   "name": "qa-playwright-ci",
   "version": "1.0.0",
-  "description": "",
+  "description": "Playwright automation project focused on high-quality QA practices for portfolio and CI delivery.",
   "main": "index.js",
-  "scripts": {},
-  "keywords": [],
-  "author": "",
+  "scripts": {
+    "test": "playwright test",
+    "test:smoke": "playwright test --grep @smoke",
+    "test:headed": "playwright test --headed",
+    "test:report": "playwright show-report",
+    "test:ui": "playwright test --ui",
+    "lint": "echo 'No lint configured yet'"
+  },
+  "keywords": [
+    "playwright",
+    "qa",
+    "automation",
+    "testing",
+    "typescript"
+  ],
+  "author": "Bruna K. F. Carvalho",
   "license": "ISC",
   "type": "commonjs",
   "devDependencies": {

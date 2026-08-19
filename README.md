@@ -1,110 +1,166 @@
-# 👋 Olá, eu sou **Bruna K. F. Carvalho**
+# QA Playwright CI
 
-## **Senior QA Engineer | QA Lead | Test Automation Specialist**
+Projeto de automação de testes web com Playwright e TypeScript, desenvolvido para demonstrar maturidade em qualidade de software, automação e pipelines de CI/CD.
 
-🚀 **Mais de 10 anos de experiência em Qualidade de Software**
+## Visão geral
 
-📍 **Osasco - SP, Brasil**
+Este repositório foi pensado como um portfólio profissional para QA, com foco em:
 
----
+- automação de cenários críticos de negócio
+- arquitetura organizada e reutilizável
+- execução em múltiplos navegadores
+- relatórios estruturados para evidência de qualidade
+- integração contínua com feedback rápido para time e stakeholders
 
-## 💼 Sobre Mim
+## Objetivo do projeto
 
-Sou uma profissional de **Quality Assurance** com experiência em automação de testes, testes de API, testes mobile, testes de performance e liderança de equipes de QA.
+Demonstrar capacidade de:
 
-Tenho atuação em ambientes ágeis, contribuindo para a entrega de produtos com alta qualidade através da implementação de estratégias de testes, automação e integração contínua.
+- validar fluxos reais do usuário
+- reduzir risco de regressão em releases
+- estruturar testes com manutenção simples
+- aplicar boas práticas em automação de testes
+- entregar evidências claras para tomada de decisão
 
----
+## Stack
 
-## 🚀 Tecnologias e Ferramentas
+- Playwright
+- TypeScript
+- Node.js
+- GitHub Actions
+- Allure Report
+- HTML Report
 
-![Playwright](https://img.shields.io/badge/Playwright-Automation-green)
-![TypeScript](https://img.shields.io/badge/TypeScript-3178C6)
-![Appium](https://img.shields.io/badge/Appium-Mobile-purple)
-![Postman](https://img.shields.io/badge/Postman-API-orange)
-![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-CI/CD-blue)
-![JMeter](https://img.shields.io/badge/JMeter-Performance-red)
+## Estratégia de testes
 
-### 🎭 Automação Web
-- **Playwright**
-- **CodeceptJS**
-- **Robot Framework**
+A suíte foi organizada com foco em:
 
-### 📱 Automação Mobile
-- **Appium**
-- **WebdriverIO**
+- Smoke tests para validação rápida
+- Regression tests para fluxo crítico do usuário
+- Testes orientados ao comportamento real de negócio
+- Separação entre páginas, dados e cenário de teste
 
-### 🔌 API Testing
-- **Postman**
-- **REST APIs**
-- **Swagger**
-
-### ⚡ Performance
-- **JMeter**
-
-### ☁️ DevOps e CI/CD
-- **GitHub Actions**
-- **Git**
-- **Docker**
-
----
-
-## 📂 Projeto
-
-### **Framework de Automação E2E com Playwright**
-
-Este projeto foi desenvolvido utilizando boas práticas de automação para garantir escalabilidade e manutenção simples.
-
-### Funcionalidades
-
-✅ **Testes End-to-End**
-
-✅ **Page Object Model (POM)**
-
-✅ **TypeScript**
-
-✅ **GitHub Actions**
-
-✅ **Integração Contínua (CI/CD)**
-
-✅ **Relatórios Allure**
-
----
-
-## 🏗️ Estrutura do Projeto
+## Estrutura do projeto
 
 ```text
-qa-playwright-ci
-│
-├── tests
-├── pages
-├── fixtures
-├── utils
-├── .github/workflows
-├── allure-results
-└── README.md
+qa-playwright-ci/
+├── .github/
+│   └── workflows/
+│       └── playwright.yml
+├── src/
+│   ├── data/
+│   │   └── users.ts
+│   └── pages/
+│       ├── CartPage.ts
+│       ├── InventoryPage.ts
+│       └── LoginPage.ts
+├── tests/
+│   ├── regression/
+│   │   └── cart-flow.spec.ts
+│   └── smoke/
+│       └── login.spec.ts
+├── .env.example
+├── .gitignore
+├── package.json
+├── playwright.config.ts
+├── README.md
+├── allure-results/
+├── playwright-report/
+├── test-results/
+└── node_modules/
 ```
 
+## Requisitos
+
+- Node.js 20+
+- npm
+
+## Como executar
+
+1. Instale as dependências:
+
+```bash
+npm install
+```
+
+2. Instale os browsers do Playwright:
+
+```bash
+npx playwright install
+```
+
+3. Execute todos os testes:
+
+```bash
+npm test
+```
+
+4. Execute smoke tests:
+
+```bash
+npm run test:smoke
+```
+
+5. Execute fluxo de regressão:
+
+```bash
+npx playwright test --grep @regression
+```
+
+6. Abra o relatório HTML:
+
+```bash
+npm run test:report
+```
+
+## Cenários cobertos
+
+- Login com usuário válido
+- Login com usuário bloqueado
+- Validação de URL após autenticação
+- Mensagem de erro para credenciais inválidas
+- Adição de produto ao carrinho
+- Validação do fluxo de checkout
+
+## Pipeline CI/CD
+
+O projeto está integrado com GitHub Actions e executa etapas de:
+
+- instalação de dependências
+- configuração do ambiente
+- execução em navegadores diferentes
+- coleta de artefatos e relatórios
+- evidência de falhas e resultados de execução
+
+## Boas práticas implementadas
+
+- Page Object Model (POM)
+- separação de dados e locators
+- estrutura por tipo de teste
+- configuração centralizada do ambiente
+- screenshots e vídeo em falhas
+- uso de retries em pipeline CI
+
+## Evidência de qualidade
+
+A suíte atual foi validada com sucesso em execução local. O projeto apresenta comportamento estável e pronto para evolução em cenários mais complexos.
+
+## Observações para portfolio
+
+Este projeto representa uma base sólida para apresentação a empresas, demonstrando:
+
+- visão de qualidade e automação
+- disciplina em arquitetura de testes
+- integração com pipelines
+- cultura de relatórios e evidências
+
+## Contato
+
+- GitHub: https://github.com/brunakaren10
+- LinkedIn: adicione seu perfil
+- E-mail: adicione seu e-mail
+
 ---
 
-## 📊 Objetivos
+Projeto em evolução para demonstrar maturidade em qualidade de software e automação de testes.
 
-- **Garantir qualidade contínua**
-- **Reduzir falhas em produção**
-- **Automatizar cenários críticos**
-- **Fornecer feedback rápido para o time**
-- **Aumentar a confiabilidade das entregas**
-
----
-
-## 📫 Contato
-
-💼 **LinkedIn:** (adicione seu link)
-
-📧 **E-mail:** (adicione seu e-mail)
-
-🐙 **GitHub:** https://github.com/brunakaren10
-
----
-
-⭐ **Se este projeto foi útil para você, considere deixar uma estrela no repositório.**
