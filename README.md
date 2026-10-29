@@ -73,14 +73,31 @@ Este projeto foi desenvolvido utilizando boas práticas de automação para gara
 ## 🏗️ Estrutura do Projeto
 
 ```text
-qa-playwright-ci
-│
-├── tests
-├── pages
-├── fixtures
-├── utils
-├── .github/workflows
-├── allure-results
+qa-playwright-ci/
+├── .github/
+│   └── workflows/
+│       └── playwright.yml
+├── src/
+│   ├── data/
+│   │   └── users.ts
+│   └── pages/
+│       ├── CartPage.ts
+│       ├── InventoryPage.ts
+│       └── LoginPage.ts
+├── tests/
+│   ├── regression/
+│   │   ├── cart-flow.spec.ts
+│   │   ├── remove-item.spec.ts
+│   │   └── logout.spec.ts
+│   └── smoke/
+│       └── login.spec.ts
+├── utils/
+│   └── bugLogger.ts
+├── eslint.config.js
+├── .env.example
+├── .gitignore
+├── package.json
+├── playwright.config.ts
 └── README.md
 ```
 
