@@ -1,77 +1,20 @@
-name: QA - Playwright Enterprise Pipeline
+name: Playwright Tests
 
 on:
-  pull_request:
   push:
-    branches:
-      - main
+    branches: [main]
+  pull_request:
+    branches: [main]
 
 jobs:
-  lint:
-    name: Lint & Install
+  test:
     runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v4
-
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          cache: 'npm'
-
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Run lint (if exists)
-        run: npm run lint || echo "No lint configured"
-
-  smoke-tests:
-    name: Smoke Tests
-    runs-on: ubuntu-latest
-    needs: lint
-
     steps:
       - uses: actions/checkout@v4
 
       - uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: 'npm'
-
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Install browsers
-        run: npx playwright install --with-deps
-
-      - name: Run smoke tests
-        run: npx playwright test --grep @smoke
-
-      - name: Upload smoke report
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: smoke-report
-          path: playwright-report/
-
-  e2e-tests:
-    name: E2E Regression (Multi-browser)
-    runs-on: ubuntu-latest
-    needs: smoke-tests
-
-    strategy:
-      fail-fast: false
-      matrix:
-        browser: [chromium, firefox]
-
-    steps:
-      - uses: actions/checkout@v4
-
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          cache: 'npm'
 
       - name: Install dependencies
         run: npm ci
@@ -79,37 +22,29 @@ jobs:
       - name: Install Playwright browsers
         run: npx playwright install --with-deps
 
-      - name: Run regression tests (${{ matrix.browser }})
-        run: npx playwright test --project=${{ matrix.browser }}
+      - name: Run Playwright tests
+        run: npx playwright test
 
-      - name: Upload Playwright Report
+      - name: Upload HTML report
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: playwright-report-${{ matrix.browser }}
+          name: playwright-report
           path: playwright-report/
+          retention-days: 30
 
-      - name: Upload Allure Results
+      - name: Upload Allure results
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: allure-results-${{ matrix.browser }}
+          name: allure-results
           path: allure-results/
+          retention-days: 30
 
-      - name: Upload failure evidence
-        if: failure()
+      - name: Upload bug reports
+        if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: failure-evidence-${{ matrix.browser }}
-          path: |
-            test-results/
-            playwright-report/
-
-  quality-gate:
-    name: Quality Gate
-    runs-on: ubuntu-latest
-    needs: e2e-tests
-
-    steps:
-      - name: Pass pipeline
-        run: echo "All tests passed - quality gate green ✅"
+          name: bug-reports
+          path: reports/bugs/
+          retention-days: 30
